@@ -1,0 +1,23 @@
+{
+  "name": "recommendedrepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "download_avatars_refactor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Polatouche0201/W2D1_S02_RecommendedRepo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Polatouche0201/W2D1_S02_RecommendedRepo/issues"
+  },
+  "homepage": "https://github.com/Polatouche0201/W2D1_S02_RecommendedRepo#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "request": "^2.88.0"
+  }
+}
