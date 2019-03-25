@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Hao Jiang">
+    <meta name="generator" content="Hao Jiang v1.0.0">
+    <title>Tiny App · My URLs List</title>
+<!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        display: -ms-flexbox;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #b3d7ff;
+      }
+    </style>
+  </head>
+
+  <body style="font-size:20px; padding:50px;" class="text-center">
+    <header>
+      <% include ./partials/_header %>
+    </header>
+
+    <table class="text-center" align="center">
+      <tr>
+        <td>
+          <a class="alert-link" style="margin: 1em">
+            <% if(userInfo === false  && Object.keys(urls).length === 0) { %>
+              No Tiny URL List
+            <% } else { %>
+              Tiny URL List
+            <% } %>
+          </a>
+        </td>
+        <td>
+          |
+        </td>
+        <td>
+          <% if(userInfo === false){ %>
+            <a class="alert-link" href="/login" style="margin: 1em">
+          <% } else { %>
+            <a class="alert-link" href="/urls/new" style="margin: 1em">
+          <% } %>
+              <b> Creat New TinyURL</b>
+            </a>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <% if(userInfo === false && Object.keys(urls).length === 0){ %>
+      <div class="alert alert-info text-center" role="alert">
+        <h5>No One Has Created A Tiny URL. Be The First One !</h5>
+        <br>
+        <h5>Here are examples of Tiny URL:</h5>
+        <h5><b>b2xVn2 -> http://www.lighthouselabs.ca</b></h5>
+        <h5><b>9sm5xK -> http://www.google.ca</b></h5>
+        <br>
+        <h5>Login to create your own Tiny URL List.</h5>
+      </div>
+    <% } else { %>
+      <table class="text-left" align="center">
+        <tr  style="margin: 1em">
+          <% for(var key in urls) { %>
+            <td>
+              <form class="form-inline" style="margin: 1em">
+                <li>
+                  <b><%= key%></b> ->
+                  <a class="alert-link" href="/u/<%= key%>">
+                      <%=urls[key].longURL%>
+                  </a>
+                </li>
+              </form>
+            </td>
+            <% if(urls[key].UID === userInfo.id){ %>
+              <td>
+                <form class="form-inline" method="GET" action="/urls/<%= key%>/update" style="margin: 1em">
+                  <button type="submit" class="btn btn-info" >Edit</button>
+                </form>
+              </td>
+              <td>
+                <form class="form-inline" method="POST" action="/urls/<%= key%>/delete">
+                  <button type="submit" class="btn btn-danger" >Delete</button>
+                </form>
+              </td>
+            <% } %>
+          </tr>
+        <% } %>
+      </table>
+    <% } %>
+
+    <% include ./partials/_footer %>
+  </body>
+</html>
+
+
