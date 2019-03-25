@@ -1,0 +1,22 @@
+{
+  "name": "assessment-exam-student",
+  "version": "1.0.0",
+  "description": "An automated examination tool for LHL assessment tests",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start-exam": "node start-exam.js",
+    "question": "node index.js"
+  },
+  "author": "Philip Jama",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.11.1",
+    "mocha": "^2.5.3",
+    "request": "^2.72.0",
+    "sinon": "^1.17.4"
+  }
+}
